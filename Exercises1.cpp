@@ -5,12 +5,7 @@
 #include "./LibGrafos/matriz.h"
 #include "./LibGrafos/particion.h"
 
-/*Create a generic function, called DijkstraInv, to solve the inverse of Dijkstra's problem, with the same
-parameter and result types than the function already included for it. The new function, therefore, must find
-the minimum cost path to a destination from each vertex of the graph and its corresponding cost.*/
-
-/*Due to the implementation of the weighted graph, it has an infinite value therefore if one of the two elements is
-infinite, that value will be returned instead of adding them, otherwise these two elements will be added.*/ 
+ 
 #pragma region Ejercicio1
 #pragma region firstTry
 template <typename tValue>
@@ -70,9 +65,6 @@ vector<tCoste> DijkstraInv(const GrafoP<tCoste>& G, typename GrafoP<tCoste>::ver
 #pragma endregion
 
 
-/*We will define the pseudocenter of a connected graph as the node that minimizes the sum of the minimum distances to its two furthest nodes.
-We will define the diameter of the graph as the sum of the minimum distances to the two nodes furthest from the pseudocenter of the graph.
-Given a connected graph represented by a cost matrix, implement a subprogram that returns the length of its diameter.*/
 #pragma region Ejercicio2
 template <typename tValue>
 tValue distance(matriz<tValue> minimunPaths, size_t i, tValue INFINITO){
@@ -107,7 +99,6 @@ tValue pseudocenter(const GrafoP<tValue> &grafo){
 #pragma endregion
 
 
-/*Check if a Cost Graph is Acyclic*/
 #pragma region Ejercicio3
 #pragma region PartitionOption
 template <typename tValue>
@@ -168,31 +159,6 @@ bool grafoAciclico(const GrafoP<tValue> &grafo){
 #pragma endregion
 
 
-/*A study needs to be done on the minimum distances necessary to travel between
-any two cities in a country called Zueland. The problem is simple but
-A few small details must be taken into account:
- a) The orography of Zuelandia is a bit special, the roads are very narrow
- and therefore only allow one direction of circulation.
-
- b) Currently Zueland is a country at war. And in fact there are a series of
- cities in the country that have been taken by the rebels, so they cannot
- be used for traveling.
-
- c) The rebels have not only taken over certain cities in the country, but
- They have also cut off certain roads, (so these roads cannot be
- used).
-
- d) But the government cannot remain impassive in the face of the situation and has demanded
- that absolutely all trips made through the country pass through the capital
- of the same, where the pertinent security controls will be carried out.
-
-Given these four conditions, it is requested to implement a subprogram that, given
-• the network (cost matrix) of Zuelandia in a normal situation,
-• the list of the cities taken by the rebels,
-• the list of roads cut by the rebels
-• and the capital of Zueland,
-Calculate the minimum cost matrix for traveling between any two cities
-Zuelandes in this situation.*/
 #pragma region Ejercicio4
 template <typename tValue>
 matriz<tValue> zuelandia(const GrafoP<tValue> &grafo, const std::vector<typename GrafoP<tValue>::vertice> &ciudadesTomadas, 

@@ -73,8 +73,8 @@ Funciones:
 /* Caminos de coste mínimo                                                    */
 /*----------------------------------------------------------------------------*/
 // Suma de costes (Dijkstra y Floyd)
-template <typename tCoste> tCoste suma(tCoste x, tCoste y)
-{
+template <typename tCoste> 
+tCoste suma(tCoste x, tCoste y){
    const tCoste INFINITO = GrafoP<tCoste>::INFINITO;
    if (x == INFINITO || y == INFINITO)
       return INFINITO;
@@ -82,16 +82,14 @@ template <typename tCoste> tCoste suma(tCoste x, tCoste y)
       return x + y;
 }
 
-template <typename tCoste>
-vector<tCoste> Dijkstra(const GrafoP<tCoste>& G,
-                        typename GrafoP<tCoste>::vertice origen,
-                        vector<typename GrafoP<tCoste>::vertice>& P)
+
 // Calcula los caminos de coste mínimo entre origen y todos los
 // vértices del grafo G. En el vector D de tamaño G.numVert()
 // devuelve estos costes mínimos y P es un vector de tamaño
 // G.numVert() tal que P[i] es el último vértice del camino
 // de origen a i.
-{
+template <typename tCoste>
+vector<tCoste> Dijkstra(const GrafoP<tCoste>& G, typename GrafoP<tCoste>::vertice origen, vector<typename GrafoP<tCoste>::vertice>& P){
    typedef typename GrafoP<tCoste>::vertice vertice;
    vertice v, w;
    const size_t n = G.numVert();
@@ -128,32 +126,73 @@ vector<tCoste> Dijkstra(const GrafoP<tCoste>& G,
    return D;
 }
 
-template <typename tCoste> typename GrafoP<tCoste>::tCamino
-camino(typename GrafoP<tCoste>::vertice orig,
-       typename GrafoP<tCoste>::vertice v,
-       const vector<typename GrafoP<tCoste>::vertice>& P)
+
+template <typename tCoste>
+vector<tCoste> DijkstraInverso(const GrafoP<tCoste>& G, typename GrafoP<tCoste>::vertice destiny, vector<typename GrafoP<tCoste>::vertice>& P){
+   typedef typename GrafoP<tCoste>::vertice vertice;
+   vertice v, w;
+   const size_t n = G.numVert();
+   vector<bool> visits(n, false);
+   vector<tCoste> costs;
+
+   for(size_t i = 0; i < n; i++) costs = G[i][destiny];
+   P = vector<vertice>(n, destiny);
+   costs[destiny] = 0;
+   visits[destiny] = true;
+
+   for(size_t i = 1; i <= n-2; i++){
+      tCoste costeMin = GrafoP<tCoste>::INFINITO;
+
+      for(v = 0; v < n; v++){
+         if(!visits[v] && costs[v] <= costeMin){
+            costeMin = costs[v];
+            w = v;
+         }
+      }
+
+      visits[w] = true;
+
+      for(v = 0; v < n; v++){
+         if(!visits[v]){
+            tCoste Owv = suma(costs[w], G[v][w]);
+
+            if(Owv < costs[v]){
+               costs[v] = Owv;
+               P[v] = w;
+            }
+         }
+      }
+   }
+
+   return costs;
+}
+
+
 // Devuelve el camino de coste mínimo entre los vértices orig e v
 // a partir de un vector P obtenido mediante la función Dijkstra().
-{
+template <typename tCoste> 
+typename GrafoP<tCoste>::tCamino camino(typename GrafoP<tCoste>::vertice orig, typename GrafoP<tCoste>::vertice v,
+                                          const vector<typename GrafoP<tCoste>::vertice>& P){
    typename GrafoP<tCoste>::tCamino C;
 
    C.insertar(v, C.primera());
-   do {
+   do{
       C.insertar(P[v], C.primera());
       v = P[v];
-   } while (v != orig);
+   }while (v != orig);
+
    return C;
 }
 
-template <typename tCoste>
-matriz<tCoste> Floyd(const GrafoP<tCoste>& G, matriz<typename GrafoP<tCoste>::vertice>& P)
+
 // Calcula los caminos de coste mínimo entre cada
 // par de vértices del grafo G. Devuelve una matriz
 // de costes mínimos A de tamaño n x n, con n = G.numVert()
 // y una matriz de vértices P de tamaño n x n, tal que
 // P[i][j] es el vértice por el que pasa el camino de coste
 // mínimo de i a j, si este vértice es i el camino es directo.
-{
+template <typename tCoste>
+matriz<tCoste> Floyd(const GrafoP<tCoste>& G, matriz<typename GrafoP<tCoste>::vertice>& P){
    typedef typename GrafoP<tCoste>::vertice vertice;
    const size_t n = G.numVert();
    matriz<tCoste> A(n);   // matriz de costes mínimos
@@ -179,13 +218,11 @@ matriz<tCoste> Floyd(const GrafoP<tCoste>& G, matriz<typename GrafoP<tCoste>::ve
    return A;
 }
 
-template <typename tCoste> typename GrafoP<tCoste>::tCamino
-caminoAux(typename GrafoP<tCoste>::vertice v,
-          typename GrafoP<tCoste>::vertice w,
-          const matriz<typename GrafoP<tCoste>::vertice>& P)
+
 // Devuelve el camino de coste mínimo entre v y w, exluidos estos,
 // a partir de una matriz P obtenida mediante la función Floyd().
-{
+template <typename tCoste> 
+typename GrafoP<tCoste>::tCamino caminoAux(typename GrafoP<tCoste>::vertice v, typename GrafoP<tCoste>::vertice w, const matriz<typename GrafoP<tCoste>::vertice>& P){
    typename GrafoP<tCoste>::tCamino C1, C2;
    typename GrafoP<tCoste>::vertice u = P[v][w];
 
@@ -198,13 +235,11 @@ caminoAux(typename GrafoP<tCoste>::vertice v,
    return C1;
 }
 
-template <typename tCoste> typename GrafoP<tCoste>::tCamino
-camino(typename GrafoP<tCoste>::vertice v,
-       typename GrafoP<tCoste>::vertice w,
-       const matriz<typename GrafoP<tCoste>::vertice>& P)
+
 // Devuelve el camino de coste mínimo desde v hasta w a partir
 // de una matriz P obtenida mediante la función Floyd().
-{
+template <typename tCoste> 
+typename GrafoP<tCoste>::tCamino camino(typename GrafoP<tCoste>::vertice v, typename GrafoP<tCoste>::vertice w, const matriz<typename GrafoP<tCoste>::vertice>& P){
    typename GrafoP<tCoste>::tCamino C = caminoAux<tCoste>(v, w, P);
    C.insertar(v, C.primera());
    C.insertar(w, C.fin());
