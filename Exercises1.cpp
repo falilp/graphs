@@ -1,5 +1,6 @@
 #include <vector>
 #include <algorithm>
+#include <map>
 #include "grafoPMC.h"
 #include "./LibGrafos/alg_grafoPMC.h"
 #include "./LibGrafos/matriz.h"

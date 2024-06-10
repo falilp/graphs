@@ -243,3 +243,78 @@
         to travel between any two cities on these three islands.
     </details>
 ## Exercises3
+ - <details open>
+    <summary>1</summary>
+    <br>
+        The Timbuktu archipelago is made up of an unknown number of islands,
+        each of which has, in turn, an indeterminate number of cities. In
+        On the other hand, the total number of cities in Timbuktu is known (we can call it n,
+        For example).<p><p>
+        Within each of the islands there are roads that allow travel between all of them.
+        the cities of the island. The Cartesian coordinates (x, y) of each and every
+        one of the cities of the archipelago. <p>There is a graph (adjacency matrix) in
+        which indicates whether there is a direct road between any two cities in the
+        archipelago. The goal of our problem is to find which cities in Timbuktu
+        belong to each of the islands of the same and what is the minimum cost of traveling between
+        any two cities on the same island of Timbuktu.<p>
+        So, given the following data:<p>
+        • List of cities in Timbuktu represented, each of them by their
+        Cartesian coordinates,<p>
+        • and Timbuktu adjacency matrix, which indicates the existing roads in
+        said archipelago,<p>
+        implements a subprogram that calculates and returns the island distribution of the
+        cities of Timbuktu, as well as the minimum cost of traveling between any two
+        cities of the same island of the archipelago.
+    </details>
+ - <details open>
+    <summary>2</summary>
+    <br>
+        The Timbuktu archipelago is made up of an unknown number of islands, each
+        one of which has, in turn, an unknown number of cities, which have
+        in common that each and every one of them has an airport.<p>
+        Within each of the islands there are roads that allow travel between all of them.
+        the cities of the island. There are no bridges that connect the islands and it has been decided that the
+        The most economical communication option to implement will be the plane.<p>
+        The Cartesian coordinates (x, y) of each and every one of the
+        cities of the archipelago.<p>
+        There is a graph (adjacency matrix) in which it indicates whether there is a direct road
+        between any two cities of the archipelago.<p>
+        The objective of our problem is to find which airlines we should implement to
+        be able to travel between all the cities of the archipelago, following the following criteria:<p>
+        1) One and only one airline will be implemented between each pair of islands.<p>
+        2) The airline chosen between each pair of islands will be the shortest among all
+        the possible ones.<p>
+        So, given the following data:<p>
+        • List of cities in Timbuktu represented, each of them by their
+        Cartesian coordinates<p>
+        • Timbuktu adjacency matrix indicating existing roads in
+        said archipelago,<p>
+        implements a subprogram that calculates and returns the airlines necessary to
+        adequately communicate the archipelago following the criteria above
+        exposed.
+    </details>
+ - <details open>
+    <summary>3</summary>
+    <br>
+        Implements an applet to find a maximum spanning tree. Is it more difficult than finding a minimum spanning tree?
+    </details>
+ - <details open>
+    <summary>4</summary>
+    <br>
+        The company EMASAJER S.A. has to unite all the cities of the world through canals
+        Jerte Valley (Cáceres). Calculate which canals and what length should be built
+        starting from the graph with the distances between the cities and assuming the following
+        premises:<p><p>
+        − the cost of opening each new channel is almost prohibitive, then the final solution
+        must have a minimum number of channels.<p>
+        − the Ministry of Public Works subsidizes us per km of canal, then the canals
+        They must be of the maximum possible length.
+    </details>
+ - <details open>
+    <summary>5</summary>
+    <br>
+        The new telephone company RETEUNI3 has to connect with each other, with fiber
+        optics, each and every one of the cities in the country. Starting from the graph that represents the
+        distances between all the cities in it, implement a subprogram that
+        Calculate the minimum length of optical fiber necessary to make said connection.
+    </details>
