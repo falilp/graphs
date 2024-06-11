@@ -318,3 +318,55 @@
         distances between all the cities in it, implement a subprogram that
         Calculate the minimum length of optical fiber necessary to make said connection.
     </details>
+ - <details open>
+    <summary>6</summary>
+    <br>
+        The company EMASAJER S.A. has to unite all the cities of the world through canals
+        Jerte Valley (Cáceres), taking into account the following premises:<p>
+        − The cost of opening each new channel is almost prohibitive, so the final solution must
+        have a minimum number of channels.<p>
+        − The Ministry of Development subsidizes us per m3/sg. of flow, then the
+        All of the channels must admit the greatest possible flow; but on the other hand,
+        The cost of opening each channel is proportional to its length, so the set of
+        The channels should also measure as little as possible. Therefore, the optimal solution
+        It should adequately combine both factors.<p>
+        Given the matrix of distances between the different cities of the Jerte valley, another
+        matrix with the different maximum admissible flows between these cities taking into account
+        Its orography counts, the subsidy that Fomento gives us per m3/sg. flow rate and cost
+        per km. channel, write a subprogram that calculates which channels and what length and
+        Flow rates should be constructed to minimize the total cost of the canal network.
+    </details>
+ - <details open>
+    <summary>7</summary>
+    <br>
+        The Grecoland archipelago (Zuelandia) is made up of only two islands,
+        Phobos and Deimos, which have n1 and n2 cities, respectively, of which c1 and c2 are
+        coastal. The Cartesian coordinates (x, y) of each and every one of the
+        cities of the archipelago. Hurricane Isadore has just devastated the archipelago, causing
+        that all the roads and bridges built in their day have disappeared. In this
+        terrible situation, help is requested from the UN, which agrees to rebuild the archipelago (that is
+        say re-communicate all the cities of the archipelago) as long as it is done at
+        minimum cost.<p>
+        In order to be able to compare costs of possible reconstructions, the following is assumed:
+        following:<p>
+        1. The cost of building any road or any bridge is proportional to its
+        length (Euclidean distance between the start and end towns of the road or
+        of the bridge).<p>
+        2. Any bridge that is built will always be more expensive than any road
+        to be built.<p>
+        In order to be able to calculate the costs of traveling between any city in the
+        archipelago the following will be considered:<p>
+        1. The direct cost of traveling, that is, the use of a road or a bridge,
+        will coincide with its length (Euclidean distance between the origin and
+        road or bridge destination).<p>
+        Under these conditions, implement a subprogram that calculates the minimum cost
+        of traveling between two cities in Grecoland, origin and destination, after having
+        rebuilt the archipelago, given the following data:<p>
+        1. List of cities on Phobos represented by their Cartesian coordinates.<p>
+        2. List of cities in Deimos represented by their coordinates
+        Cartesian.<p>
+        3. List of coastal cities of Phobos.<p>
+        4. List of coastal cities of Deimos.<p>
+        5. City of origin of the trip.<p>
+        6. Travel destination city.
+    </details>
