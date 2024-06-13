@@ -48,7 +48,6 @@ template <typename tValue>
 tValue mazePath(const tValue N, const std::vector<coordinates> wallsList, typename GrafoP<tValue>::vertice &origin, typename GrafoP<tValue>::vertice &destiny){
     GrafoP<tValue> grafo(N);
     std::vector<typename GrafoP<tValue>::vertice> vectorAux;
-    std::vector position{(-1,0),(1,0),(0,-1),(0,1)};
 
     for(size_t i = 0; i < grafo.numVert(); i++) for(size_t j = 0; j < grafo.numVert(); j++) grafo[i][j] = 1;
     for(size_t i = 0; i < wallsList.size(); i++) grafo[wallsList[i].i][wallsList[i].j] = grafo.INFINITO;
